@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="131" id="KGk-i7-Jjw" userLabel="Table View Cell" customClass="TableViewCell" customModule="WatchTime" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="392" height="131"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM" customClass="TableViewCell" customModule="WatchTime" customModuleProvider="target">
+                <rect key="frame" x="0.0" y="0.0" width="392" height="131"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Nt-A2-upc" userLabel="MainView" customClass="PopularTableViewCell" customModule="WatchTime" customModuleProvider="target">
+                        <rect key="frame" x="8" y="8" width="376" height="115"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo.artframe" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="i9f-Nq-w6T">
+                                <rect key="frame" x="0.0" y="1.6666666666666643" width="88" height="112"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="115" id="GJs-AE-I0Y"/>
+                                    <constraint firstAttribute="width" constant="88" id="TIv-NT-2Dd"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ff5-Px-QSe" userLabel="Inner View">
+                                <rect key="frame" x="96" y="0.0" width="280" height="103"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Venom Let There Be Carnage" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oZu-vm-P7O">
+                                        <rect key="frame" x="0.0" y="8" width="280" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4rx-w8-6BR" userLabel="Middle Stack View">
+                                        <rect key="frame" x="0.0" y="33" width="94.666666666666671" height="42.666666666666657"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="kfl-AN-NvI" userLabel="Rate Stack View">
+                                                <rect key="frame" x="0.0" y="0.0" width="94.666666666666671" height="20.333333333333332"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="dZ0-j6-QEI">
+                                                        <rect key="frame" x="0.0" y="-0.33333333333333215" width="22" height="19.999999999999996"/>
+                                                        <color key="tintColor" systemColor="systemYellowColor"/>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6.4/10 IMDB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L0f-Cz-S7d">
+                                                        <rect key="frame" x="26" y="0.0" width="68.666666666666671" height="20.333333333333332"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <color key="textColor" red="0.64705884459999996" green="0.64705884459999996" blue="0.64705884459999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Horror" textAlignment="natural" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yrw-Ny-FVP" customClass="UILabelPadding" customModule="WatchTime" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28.333333333333325" width="37" height="14.333333333333332"/>
+                                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="st3-5v-avW" userLabel="Time Stack View">
+                                        <rect key="frame" x="0.0" y="83.666666666666671" width="68.666666666666671" height="20.333333333333329"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="H1y-nY-e6C">
+                                                <rect key="frame" x="0.0" y="0.99999999999999822" width="19.666666666666668" height="19"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1h 47m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gzN-Yc-YEX">
+                                                <rect key="frame" x="27.666666666666657" y="0.0" width="41" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20.329999999999998" id="jA9-Bb-csg"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="oZu-vm-P7O" secondAttribute="trailing" id="419-3c-2wj"/>
+                                    <constraint firstItem="4rx-w8-6BR" firstAttribute="top" secondItem="oZu-vm-P7O" secondAttribute="bottom" constant="8" id="4id-rL-mQc"/>
+                                    <constraint firstItem="st3-5v-avW" firstAttribute="top" secondItem="4rx-w8-6BR" secondAttribute="bottom" constant="8" id="8hc-dk-n7H"/>
+                                    <constraint firstItem="4rx-w8-6BR" firstAttribute="leading" secondItem="Ff5-Px-QSe" secondAttribute="leading" id="IbO-Lf-Z6o"/>
+                                    <constraint firstItem="oZu-vm-P7O" firstAttribute="top" secondItem="Ff5-Px-QSe" secondAttribute="top" constant="8" id="Jbh-UI-Oqc"/>
+                                    <constraint firstItem="oZu-vm-P7O" firstAttribute="leading" secondItem="Ff5-Px-QSe" secondAttribute="leading" id="bl4-Z4-nZW"/>
+                                    <constraint firstItem="st3-5v-avW" firstAttribute="leading" secondItem="Ff5-Px-QSe" secondAttribute="leading" id="uiV-1r-Of8"/>
+                                    <constraint firstAttribute="height" constant="103" id="zqR-ok-9Co"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="i9f-Nq-w6T" secondAttribute="bottom" id="2ai-0N-Pai"/>
+                            <constraint firstItem="i9f-Nq-w6T" firstAttribute="leading" secondItem="6Nt-A2-upc" secondAttribute="leading" id="Di2-XL-d2v"/>
+                            <constraint firstItem="Ff5-Px-QSe" firstAttribute="leading" secondItem="i9f-Nq-w6T" secondAttribute="trailing" constant="8" id="EZE-IT-BoD"/>
+                            <constraint firstItem="Ff5-Px-QSe" firstAttribute="top" secondItem="6Nt-A2-upc" secondAttribute="top" id="GJw-6J-bsF"/>
+                            <constraint firstItem="i9f-Nq-w6T" firstAttribute="top" secondItem="6Nt-A2-upc" secondAttribute="top" id="T2K-aF-K7j"/>
+                            <constraint firstAttribute="trailing" secondItem="Ff5-Px-QSe" secondAttribute="trailing" id="bNp-8l-Xvb"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="6Nt-A2-upc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="9TM-ze-8cn"/>
+                    <constraint firstItem="6Nt-A2-upc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="KnA-t0-YWs"/>
+                    <constraint firstItem="6Nt-A2-upc" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="bJ2-zf-r7i"/>
+                    <constraint firstAttribute="bottom" secondItem="6Nt-A2-upc" secondAttribute="bottom" constant="8" id="dET-g8-Hc8"/>
+                    <constraint firstAttribute="trailing" secondItem="6Nt-A2-upc" secondAttribute="trailing" constant="8" id="xwX-rp-5yY"/>
+                </constraints>
+                <connections>
+                    <outlet property="moiveLabel" destination="oZu-vm-P7O" id="ZD0-WH-1Sf"/>
+                    <outlet property="movieRate" destination="L0f-Cz-S7d" id="xTP-RV-fBg"/>
+                    <outlet property="movieTime" destination="gzN-Yc-YEX" id="8pd-aK-Tl6"/>
+                </connections>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="moiveLabel" destination="oZu-vm-P7O" id="Lb8-pr-b0A"/>
+                <outlet property="movieRate" destination="L0f-Cz-S7d" id="RVB-aU-JaC"/>
+                <outlet property="movieTime" destination="gzN-Yc-YEX" id="5CB-2z-oCq"/>
+                <outlet property="movieType" destination="Yrw-Ny-FVP" id="qgg-V1-yZc"/>
+            </connections>
+            <point key="canvasLocation" x="-241.22137404580153" y="-6.6901408450704229"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="clock" catalog="system" width="128" height="123"/>
+        <image name="photo.artframe" catalog="system" width="128" height="93"/>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
