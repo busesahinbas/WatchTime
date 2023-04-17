@@ -17,6 +17,10 @@
 		4DB8F16A29DC540F00367A80 /* DetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB8F16829DC540F00367A80 /* DetailViewCell.swift */; };
 		4DB8F16B29DC540F00367A80 /* DetailViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DB8F16929DC540F00367A80 /* DetailViewCell.xib */; };
 		4DB8F17029E3528700367A80 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB8F16F29E3528700367A80 /* Constants.swift */; };
+		4DB8F17429E3E8AA00367A80 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB8F17329E3E8AA00367A80 /* Movie.swift */; };
+		4DB8F17929E6A24600367A80 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 4DB8F17829E6A24600367A80 /* Alamofire */; };
+		4DB8F17B29E6AABE00367A80 /* MovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB8F17A29E6AABE00367A80 /* MovieViewModel.swift */; };
+		4DB8F17D29EAEE2500367A80 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB8F17C29EAEE2500367A80 /* Network.swift */; };
 		A87885A229D17C3800320613 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87885A029D17C3800320613 /* TableViewCell.swift */; };
 		A87885A329D17C3800320613 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A87885A129D17C3800320613 /* TableViewCell.xib */; };
 		A87885A529D1C0F300320613 /* UILabelPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87885A429D1C0F300320613 /* UILabelPadding.swift */; };
@@ -38,6 +42,9 @@
 		4DB8F16829DC540F00367A80 /* DetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewCell.swift; sourceTree = "<group>"; };
 		4DB8F16929DC540F00367A80 /* DetailViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewCell.xib; sourceTree = "<group>"; };
 		4DB8F16F29E3528700367A80 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		4DB8F17329E3E8AA00367A80 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		4DB8F17A29E6AABE00367A80 /* MovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewModel.swift; sourceTree = "<group>"; };
+		4DB8F17C29EAEE2500367A80 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		A87885A029D17C3800320613 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		A87885A129D17C3800320613 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		A87885A429D1C0F300320613 /* UILabelPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelPadding.swift; sourceTree = "<group>"; };
@@ -51,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DB8F17929E6A24600367A80 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +95,7 @@
 				4D3F41CA29CDD7F600AD0AC5 /* Assets.xcassets */,
 				4D3F41CC29CDD7F600AD0AC5 /* LaunchScreen.storyboard */,
 				4D3F41CF29CDD7F600AD0AC5 /* Info.plist */,
+				4DB8F17C29EAEE2500367A80 /* Network.swift */,
 			);
 			path = WatchTime;
 			sourceTree = "<group>";
@@ -94,6 +103,7 @@
 		4DB8F16C29E34A9300367A80 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4DB8F17329E3E8AA00367A80 /* Movie.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -101,6 +111,7 @@
 		4DB8F16D29E34A9D00367A80 /* View Model */ = {
 			isa = PBXGroup;
 			children = (
+				4DB8F17A29E6AABE00367A80 /* MovieViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -169,6 +180,9 @@
 			dependencies = (
 			);
 			name = WatchTime;
+			packageProductDependencies = (
+				4DB8F17829E6A24600367A80 /* Alamofire */,
+			);
 			productName = WatchTime;
 			productReference = 4D3F41BE29CDD7F500AD0AC5 /* WatchTime.app */;
 			productType = "com.apple.product-type.application";
@@ -197,6 +211,9 @@
 				Base,
 			);
 			mainGroup = 4D3F41B529CDD7F500AD0AC5;
+			packageReferences = (
+				4DB8F17729E6A24600367A80 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 4D3F41BF29CDD7F500AD0AC5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -227,6 +244,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DB8F17D29EAEE2500367A80 /* Network.swift in Sources */,
 				A87885A529D1C0F300320613 /* UILabelPadding.swift in Sources */,
 				A87885A229D17C3800320613 /* TableViewCell.swift in Sources */,
 				4D3F41C629CDD7F500AD0AC5 /* ViewController.swift in Sources */,
@@ -236,7 +254,9 @@
 				4D3F41C429CDD7F500AD0AC5 /* SceneDelegate.swift in Sources */,
 				4DB8F16A29DC540F00367A80 /* DetailViewCell.swift in Sources */,
 				4D3F41D629CE246F00AD0AC5 /* MainViewController.swift in Sources */,
+				4DB8F17429E3E8AA00367A80 /* Movie.swift in Sources */,
 				A87885B129D588F300320613 /* DetailViewController.swift in Sources */,
+				4DB8F17B29E6AABE00367A80 /* MovieViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,6 +474,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4DB8F17729E6A24600367A80 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4DB8F17829E6A24600367A80 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4DB8F17729E6A24600367A80 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4D3F41B629CDD7F500AD0AC5 /* Project object */;
 }

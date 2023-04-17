@@ -6,17 +6,22 @@
 //
 
 import UIKit
+import Alamofire
 
 class MainViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
-   // @IBOutlet weak var pullDownButton: UIButton!
+    
+    var movieViewModel: MovieViewModel!
+    var popularMovieResult = [Result]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        //setPullDowButton()
+        
+        getMovie()
+        
         registerCollectionView()
         registerTableView()
         
@@ -30,22 +35,32 @@ class MainViewController: UIViewController {
         
         tableView.dataSource = self
         tableView.delegate = self
+        
+     
     }
     
-    /*
-    func setPullDowButton(){
-        let optionClouse = {(Action : UIAction) in
-            print("test")
-        }
-        
-        pullDownButton.menu = UIMenu(children : [
-            UIAction(title: "Day", state : .on, handler: optionClouse),
-            UIAction(title: "Week", handler: optionClouse)])
-        
-        pullDownButton.showsMenuAsPrimaryAction = true
-        pullDownButton.changesSelectionAsPrimaryAction = true
+    func getMovie() {
+        AF
+            .request("https://api.themoviedb.org/3/movie/now_playing?api_key=cddca74979cb6b2cd49d2a06b8ec0e2c&language=en-US&page=1", method: .get)
+            .responseDecodable(of:Movie.self) { response in
+                
+                switch response.result {
+                case .success(let data):
+                    print(data)
+                    do {
+                        let instance = try JSONDecoder().decode(Movie.self, from: response.data!)
+                        self.popularMovieResult = instance.results
+                        self.collectionView.reloadData()
+                        
+                    } catch let error {
+                      print(error)
+                    }
+                case .failure(let error):
+                    print(error)
+                }
+            }
     }
-     */
+    
 }
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -65,11 +80,16 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
  
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return popularMovieResult.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HorizontalCollectionViewCell", for: indexPath) as? HorizontalCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HorizontalCollectionViewCell", for: indexPath) as? HorizontalCollectionViewCell
+        else { return UICollectionViewCell() }
+        
+        cell.movieName.text = popularMovieResult[indexPath.row].originalTitle
+        cell.movieRate.text = String(popularMovieResult[indexPath.row].voteAverage) + "/10 IMDb"
+        
         return cell
     }
     
