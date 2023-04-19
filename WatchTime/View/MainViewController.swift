@@ -13,14 +13,26 @@ class MainViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var movieViewModel: MovieViewModel!
-    var popularMovieResult = [Result]()
+    var movieViewModel = MovieViewModel(service: Service())
+    var movieViewModel2 = MovieViewModel(service: Service())
+    var popularResult : [Result]?
+    var nowPlayingResult : [Result]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        getMovie()
+        movieViewModel.getMoviePopular(url: Endpoints.moviePopular.url)
+        movieViewModel.didFinishFetch = {
+            self.popularResult = self.movieViewModel.popularResult
+            self.collectionView.reloadData()
+        }
+        
+        movieViewModel2.getMoviePopular(url: Endpoints.movieNowPlaying.url)
+        movieViewModel2.didFinishFetch = {
+            self.nowPlayingResult = self.movieViewModel2.popularResult
+            self.tableView.reloadData()
+        }
         
         registerCollectionView()
         registerTableView()
@@ -37,28 +49,6 @@ class MainViewController: UIViewController {
         tableView.delegate = self
         
      
-    }
-    
-    func getMovie() {
-        AF
-            .request("https://api.themoviedb.org/3/movie/now_playing?api_key=cddca74979cb6b2cd49d2a06b8ec0e2c&language=en-US&page=1", method: .get)
-            .responseDecodable(of:Movie.self) { response in
-                
-                switch response.result {
-                case .success(let data):
-                    print(data)
-                    do {
-                        let instance = try JSONDecoder().decode(Movie.self, from: response.data!)
-                        self.popularMovieResult = instance.results
-                        self.collectionView.reloadData()
-                        
-                    } catch let error {
-                      print(error)
-                    }
-                case .failure(let error):
-                    print(error)
-                }
-            }
     }
     
 }
@@ -80,19 +70,27 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
  
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return popularMovieResult.count
+        return popularResult?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HorizontalCollectionViewCell", for: indexPath) as? HorizontalCollectionViewCell
         else { return UICollectionViewCell() }
         
-        cell.movieName.text = popularMovieResult[indexPath.row].originalTitle
-        cell.movieRate.text = String(popularMovieResult[indexPath.row].voteAverage) + "/10 IMDb"
+        cell.movieName.text = popularResult?[indexPath.row].originalTitle
+        cell.movieRate.text = (popularResult?[indexPath.row].voteAverage.description ?? "0") + "/10 IMDb"
         
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController
+        //vc?.image = UIImage(named: names[indexPath.row] )!
+        //vc?.name = names[indexPath.row]
+        vc?.viewModel = self.movieViewModel
+        vc?.index = indexPath.row
+        navigationController?.pushViewController(vc!, animated: true)
+    }
 
 }
 
@@ -103,12 +101,17 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return nowPlayingResult?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as? TableViewCell else { return UITableViewCell() }
+        
+        cell.moiveLabel.text = nowPlayingResult?[indexPath.row].originalTitle
+        cell.movieType.text = nowPlayingResult?[indexPath.row].genreIDS[0].description
+        cell.movieRate.text = (nowPlayingResult?[indexPath.row].voteAverage.description ?? "0") + "/10 IMDb"
+        cell.movieLanguage.text = nowPlayingResult?[indexPath.row].originalLanguage.uppercased()
         return cell
     }
     
@@ -124,6 +127,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         let vc = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController
         //vc?.image = UIImage(named: names[indexPath.row] )!
         //vc?.name = names[indexPath.row]
+        vc?.viewModel = self.movieViewModel2
+        vc?.index = indexPath.row
         navigationController?.pushViewController(vc!, animated: true)
     }
 }

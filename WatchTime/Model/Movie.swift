@@ -15,6 +15,7 @@ import Foundation
 
 // MARK: - Movie
 struct Movie: Codable {
+    
     let results: [Result]
 
     enum CodingKeys: String, CodingKey {
@@ -42,4 +43,20 @@ struct Result: Codable {
         case title
         case voteAverage = "vote_average"
     }
+    
+}
+
+struct MovieRequest: Codable {}
+
+func jsonToObject(json:Data){
+    do{
+        let databases = try
+        JSONDecoder().decode([Movie].self,from: json)
+         print(databases)
+        
+    }catch let jsonErr {
+        print(jsonErr)
+        
+    }
+    
 }

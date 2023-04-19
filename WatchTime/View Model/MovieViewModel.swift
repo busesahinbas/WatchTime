@@ -8,25 +8,34 @@
 import Foundation
 import Alamofire
 
-struct MovieViewModel {
+class MovieViewModel {
     
+    var didFinishFetch: (() -> ())?
     
-    init(){
-        getMovie()
+    private var service : Service?
+    var popularResult : [Result]?
+    var error : Error? {
+        didSet {
+            print("error")
+        }
     }
     
-    func getMovie() {
-        AF
-            .request("https://api.themoviedb.org/3/movie/now_playing?api_key=cddca74979cb6b2cd49d2a06b8ec0e2c&language=en-US&page=1",method: .get)
-            .responseDecodable(of:Movie.self) { response in
-                
-                switch response.result {
-                case .success(let data):
-                    print(data)
-                case .failure(let error):
-                    print(error)
-                }
+    init(service: Service? = nil) {
+        self.service = service
+    }
+    
+    func getMoviePopular(url: String) {
+        self.service?.getMovie(url: url, completion: { popularResult, error  in
+            if let error = error {
+                self.error = error
+                return
             }
+            self.popularResult = popularResult
+            self.didFinishFetch?()
+            
+            
+        })
+        
     }
     
     

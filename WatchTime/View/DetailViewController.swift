@@ -9,8 +9,17 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
+    
+    @IBOutlet weak var movieName: UILabel!
     @IBOutlet weak var movieType: UILabelPadding!
+    
+    @IBOutlet weak var movieRate: UILabel!
+    @IBOutlet weak var movieLanguage: UILabel!
+    
     @IBOutlet weak var detailTableView: UITableView!
+    
+    var viewModel = MovieViewModel()
+    var index = Int()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +34,15 @@ class DetailViewController: UIViewController {
         
         detailTableView.dataSource = self
         detailTableView.delegate = self
+        
+     
+        movieName.text = viewModel.popularResult?[index].originalTitle
+        movieLanguage.text = viewModel.popularResult?[index].originalLanguage.uppercased()
+        movieRate.text = (viewModel.popularResult?[index].voteAverage.description ?? "0") + "/10 IMDb"
+        movieType.text = viewModel.popularResult?[index].genreIDS[0].description
+        
+        detailTableView.reloadData()
+       
     }
 
 }
@@ -41,11 +59,15 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "DetailViewCell", for: indexPath) as? TableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "DetailViewCell", for: indexPath) as? DetailViewCell else { return UITableViewCell() }
+   
+        //cell.label.text = viewModel.popularResult?[index].overview
+        cell.textView.text = viewModel.popularResult?[index].overview
+        
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 119
+        return UIScreen.main.bounds.height/4
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {

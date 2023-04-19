@@ -11,7 +11,7 @@ class TableViewCell: UITableViewCell {
 
     @IBOutlet weak var moiveLabel: UILabel!
     @IBOutlet weak var movieRate: UILabel!
-    @IBOutlet weak var movieTime: UILabel!
+    @IBOutlet weak var movieLanguage: UILabel!
     @IBOutlet weak var movieType: UILabel!
     
     override func awakeFromNib() {
