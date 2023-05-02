@@ -7,7 +7,7 @@
 
 import Foundation
 import Alamofire
-
+import UIKit
 
 struct Service {
     
@@ -43,10 +43,6 @@ struct Service {
             completion(response.results, nil)
         }
        
-    }
-    
-    fun getPoster(){
-        
     }
 
 }

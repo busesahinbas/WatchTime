@@ -7,14 +7,15 @@
 
 import UIKit
 import Alamofire
+import Kingfisher
 
 class MainViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var movieViewModel = MovieViewModel(service: Service())
-    var movieViewModel2 = MovieViewModel(service: Service())
+    var popularViewModel = MovieViewModel(service: Service())
+    var nowPlayingViewModel = MovieViewModel(service: Service())
     var popularResult : [Result]?
     var nowPlayingResult : [Result]?
     
@@ -22,15 +23,15 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        movieViewModel.getMoviePopular(url: Endpoints.moviePopular.url)
-        movieViewModel.didFinishFetch = {
-            self.popularResult = self.movieViewModel.popularResult
+        popularViewModel.getMoviePopular()
+        popularViewModel.didFinishFetch = {
+            self.popularResult = self.popularViewModel.movieResult
             self.collectionView.reloadData()
         }
         
-        movieViewModel2.getMoviePopular(url: Endpoints.movieNowPlaying.url)
-        movieViewModel2.didFinishFetch = {
-            self.nowPlayingResult = self.movieViewModel2.popularResult
+        nowPlayingViewModel.getMovieNowPlaying()
+        nowPlayingViewModel.didFinishFetch = {
+            self.nowPlayingResult = self.nowPlayingViewModel.movieResult
             self.tableView.reloadData()
         }
         
@@ -47,10 +48,7 @@ class MainViewController: UIViewController {
         
         tableView.dataSource = self
         tableView.delegate = self
-        
-     
     }
-    
 }
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -58,17 +56,17 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func registerCollectionView(){
         collectionView.register(UINib(nibName: "HorizontalCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "HorizontalCollectionViewCell")
     }
-   
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let gridLayout = collectionViewLayout as! UICollectionViewFlowLayout
         let widthPerItem = collectionView.frame.width / 2.5 - gridLayout.minimumInteritemSpacing
-        return CGSize(width:widthPerItem, height:300)
+        return CGSize(width:widthPerItem, height:250)
     }
- 
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return popularResult?.count ?? 0
     }
@@ -77,21 +75,17 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HorizontalCollectionViewCell", for: indexPath) as? HorizontalCollectionViewCell
         else { return UICollectionViewCell() }
         
-        cell.movieName.text = popularResult?[indexPath.row].originalTitle
-        cell.movieRate.text = (popularResult?[indexPath.row].voteAverage.description ?? "0") + "/10 IMDb"
+        cell.configure(result: popularResult, indexPath: indexPath)
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController
-        //vc?.image = UIImage(named: names[indexPath.row] )!
-        //vc?.name = names[indexPath.row]
-        vc?.viewModel = self.movieViewModel
-        vc?.index = indexPath.row
+        vc?.result = self.popularResult?[indexPath.row]
         navigationController?.pushViewController(vc!, animated: true)
     }
-
+    
 }
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
@@ -103,15 +97,14 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return nowPlayingResult?.count ?? 0
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as? TableViewCell else { return UITableViewCell() }
         
-        cell.moiveLabel.text = nowPlayingResult?[indexPath.row].originalTitle
-        cell.movieType.text = nowPlayingResult?[indexPath.row].genreIDS[0].description
-        cell.movieRate.text = (nowPlayingResult?[indexPath.row].voteAverage.description ?? "0") + "/10 IMDb"
-        cell.movieLanguage.text = nowPlayingResult?[indexPath.row].originalLanguage.uppercased()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as? TableViewCell
+        else { return UITableViewCell() }
+        
+        cell.configure(result: nowPlayingResult, indexPath: indexPath)
+        
         return cell
     }
     
@@ -125,12 +118,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController
-        //vc?.image = UIImage(named: names[indexPath.row] )!
-        //vc?.name = names[indexPath.row]
-        vc?.viewModel = self.movieViewModel2
-        vc?.index = indexPath.row
+        vc?.result = self.nowPlayingResult?[indexPath.row]
         navigationController?.pushViewController(vc!, animated: true)
     }
 }
-
 

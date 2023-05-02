@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import Kingfisher
 
 class DetailViewController: UIViewController {
 
     
+    @IBOutlet weak var movieImageView: UIImageView!
     @IBOutlet weak var movieName: UILabel!
     @IBOutlet weak var movieType: UILabelPadding!
     
@@ -18,33 +20,40 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var detailTableView: UITableView!
     
-    var viewModel = MovieViewModel()
-    var index = Int()
+    var result : Result?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.setUp()
+        self.configure()
+    }
+    
+    func setUp(){
         movieType.layer.cornerRadius = movieType.frame.height/2
         movieType.layer.borderWidth = 0.5
         movieType.clipsToBounds = true
         movieType.layer.borderColor = UIColor.lightGray.cgColor
-        // Do any additional setup after loading the view.
         
         registerDetailTableView()
-        
         detailTableView.dataSource = self
         detailTableView.delegate = self
-        
-     
-        movieName.text = viewModel.popularResult?[index].originalTitle
-        movieLanguage.text = viewModel.popularResult?[index].originalLanguage.uppercased()
-        movieRate.text = (viewModel.popularResult?[index].voteAverage.description ?? "0") + "/10 IMDb"
-        movieType.text = viewModel.popularResult?[index].genreIDS[0].description
-        
-        detailTableView.reloadData()
-       
     }
 
+    func configure(){
+        guard let result = result else { return }
+        movieName.text = result.originalTitle
+        movieLanguage.text = result.originalLanguage.uppercased()
+        movieRate.text = result.voteText
+        movieType.text = result.genre
+
+        guard let dowloadUrl = URL(string: result.posterUrl) else { return }
+        movieImageView.kf.setImage(with: ImageResource(downloadURL: dowloadUrl),
+                                   placeholder: UIImage(named: "placeholder"),
+                                   options: [.processor(RoundCornerImageProcessor(cornerRadius: 50))])
+        
+        detailTableView.reloadData()
+    }
 }
 
 extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
@@ -60,9 +69,8 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "DetailViewCell", for: indexPath) as? DetailViewCell else { return UITableViewCell() }
-   
-        //cell.label.text = viewModel.popularResult?[index].overview
-        cell.textView.text = viewModel.popularResult?[index].overview
+        
+        cell.textView.text = result?.overview
         
         return cell
     }

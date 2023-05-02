@@ -6,14 +6,13 @@
 //
 
 import Foundation
-import Alamofire
 
 class MovieViewModel {
     
     var didFinishFetch: (() -> ())?
     
     private var service : Service?
-    var popularResult : [Result]?
+    var movieResult : [Result]?
     var error : Error? {
         didSet {
             print("error")
@@ -24,18 +23,26 @@ class MovieViewModel {
         self.service = service
     }
     
-    func getMoviePopular(url: String) {
-        self.service?.getMovie(url: url, completion: { popularResult, error  in
+    func getMoviePopular() {
+        self.service?.getMovie(url: Endpoints.moviePopular.url, completion: { popularResult, error  in
             if let error = error {
                 self.error = error
                 return
             }
-            self.popularResult = popularResult
+            self.movieResult = popularResult
             self.didFinishFetch?()
-            
-            
         })
-        
+    }
+    
+    func getMovieNowPlaying() {
+        self.service?.getMovie(url: Endpoints.movieNowPlaying.url, completion: { nowPlayingResult, error  in
+            if let error = error {
+                self.error = error
+                return
+            }
+            self.movieResult = nowPlayingResult
+            self.didFinishFetch?()
+        })
     }
     
     

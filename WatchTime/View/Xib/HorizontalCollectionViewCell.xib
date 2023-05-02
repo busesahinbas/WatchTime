@@ -17,20 +17,20 @@
                 <rect key="frame" x="0.0" y="0.0" width="143" height="260"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hrq-p7-EwT">
-                        <rect key="frame" x="0.0" y="0.0" width="143" height="260"/>
+                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hrq-p7-EwT">
+                        <rect key="frame" x="0.0" y="0.0" width="143" height="280"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="2SL-yE-R8k">
-                                <rect key="frame" x="8" y="176" width="127" height="76"/>
+                                <rect key="frame" x="8" y="168" width="127" height="84"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spiderman: No Way Home" lineBreakMode="clip" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Udh-qc-GVd">
-                                        <rect key="frame" x="0.0" y="0.0" width="127" height="55.666666666666664"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spiderman: No Way Home" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Udh-qc-GVd">
+                                        <rect key="frame" x="0.0" y="0.0" width="127" height="63.666666666666664"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="xwu-Xw-OMi">
-                                        <rect key="frame" x="0.0" y="55.666666666666664" width="94" height="20.333333333333336"/>
+                                        <rect key="frame" x="0.0" y="63.666666666666664" width="94" height="20.333333333333336"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ioG-aq-1yA">
                                                 <rect key="frame" x="0.0" y="-0.33333333333333215" width="22" height="19.999999999999996"/>
@@ -49,8 +49,8 @@
                                     <constraint firstAttribute="trailing" secondItem="Udh-qc-GVd" secondAttribute="trailing" id="pkP-CO-Vbx"/>
                                 </constraints>
                             </stackView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="film" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="vAw-Pa-n85">
-                                <rect key="frame" x="8" y="9.6666666666666572" width="127" height="157"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="film" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="vAw-Pa-n85">
+                                <rect key="frame" x="8" y="1.6666666666666572" width="127" height="157"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="160" id="qGE-KS-BUv"/>
                                 </constraints>
@@ -64,7 +64,7 @@
                             <constraint firstItem="2SL-yE-R8k" firstAttribute="top" secondItem="vAw-Pa-n85" secondAttribute="bottom" constant="8" id="WjC-AY-lg2"/>
                             <constraint firstAttribute="bottom" secondItem="2SL-yE-R8k" secondAttribute="bottom" constant="8" id="fRS-4q-XlA"/>
                             <constraint firstAttribute="trailing" secondItem="2SL-yE-R8k" secondAttribute="trailing" constant="8" id="n5z-Zs-9Sx"/>
-                            <constraint firstItem="vAw-Pa-n85" firstAttribute="top" secondItem="Hrq-p7-EwT" secondAttribute="top" constant="8" id="oOx-Sk-CpE"/>
+                            <constraint firstItem="vAw-Pa-n85" firstAttribute="top" secondItem="Hrq-p7-EwT" secondAttribute="top" id="oOx-Sk-CpE"/>
                         </constraints>
                     </view>
                 </subviews>
