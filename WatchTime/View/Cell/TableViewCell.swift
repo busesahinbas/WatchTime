@@ -13,14 +13,15 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var moiveLabel: UILabel!
     @IBOutlet weak var movieRate: UILabel!
     @IBOutlet weak var movieLanguage: UILabel!
-    @IBOutlet weak var movieType: UILabel!
+    @IBOutlet weak var movieType: UILabelPadding!
     @IBOutlet weak var movieImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+    
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
@@ -30,11 +31,14 @@ class TableViewCell: UITableViewCell {
         movieType.layer.borderColor = UIColor.lightGray.cgColor
         
     }
+
+
     
     func configure(result : [Result]?, indexPath : IndexPath) {
         guard let result = result else { return }
         moiveLabel.text = result[indexPath.row].originalTitle
         movieRate.text = result[indexPath.row].voteText
+        movieType.text = result[indexPath.row].genre
         
         let downloadUrl = URL(string: (result[indexPath.row].posterUrl))!
         movieImage.kf.setImage(with: ImageResource(downloadURL: downloadUrl),
