@@ -28,16 +28,16 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ff5-Px-QSe" userLabel="Inner View">
-                                <rect key="frame" x="96" y="0.0" width="280" height="103"/>
+                                <rect key="frame" x="94" y="0.0" width="282" height="103"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Venom Let There Be Carnage" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oZu-vm-P7O">
-                                        <rect key="frame" x="0.0" y="8" width="280" height="17"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                        <rect key="frame" x="0.0" y="7.9999999999999991" width="282" height="15.666666666666664"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4rx-w8-6BR" userLabel="Middle Stack View">
-                                        <rect key="frame" x="0.0" y="33" width="94.666666666666671" height="71"/>
+                                        <rect key="frame" x="0.0" y="31.666666666666657" width="94.666666666666671" height="71"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="kfl-AN-NvI" userLabel="Rate Stack View">
                                                 <rect key="frame" x="0.0" y="0.0" width="94.666666666666671" height="20.333333333333332"/>
@@ -55,7 +55,7 @@
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Horror" textAlignment="natural" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yrw-Ny-FVP" customClass="UILabelPadding" customModule="WatchTime" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28.333333333333325" width="37" height="14.333333333333332"/>
+                                                <rect key="frame" x="0.0" y="28.333333333333332" width="37" height="14.333333333333332"/>
                                                 <color key="backgroundColor" red="0.83529412749999998" green="0.90196073060000004" blue="0.99215686319999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <color key="tintColor" systemColor="systemCyanColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -63,7 +63,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="st3-5v-avW" userLabel="Time Stack View">
-                                                <rect key="frame" x="0.0" y="50.666666666666671" width="44.666666666666664" height="20.333333333333329"/>
+                                                <rect key="frame" x="0.0" y="50.666666666666664" width="44.666666666666664" height="20.333333333333336"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="language" translatesAutoresizingMaskIntoConstraints="NO" id="H1y-nY-e6C">
                                                         <rect key="frame" x="0.0" y="0.0" width="20.333333333333332" height="20.333333333333332"/>
@@ -101,7 +101,7 @@
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="i9f-Nq-w6T" secondAttribute="bottom" id="2ai-0N-Pai"/>
                             <constraint firstItem="i9f-Nq-w6T" firstAttribute="leading" secondItem="6Nt-A2-upc" secondAttribute="leading" id="Di2-XL-d2v"/>
-                            <constraint firstItem="Ff5-Px-QSe" firstAttribute="leading" secondItem="i9f-Nq-w6T" secondAttribute="trailing" constant="8" id="EZE-IT-BoD"/>
+                            <constraint firstItem="Ff5-Px-QSe" firstAttribute="leading" secondItem="i9f-Nq-w6T" secondAttribute="trailing" constant="6" id="EZE-IT-BoD"/>
                             <constraint firstItem="Ff5-Px-QSe" firstAttribute="top" secondItem="6Nt-A2-upc" secondAttribute="top" id="GJw-6J-bsF"/>
                             <constraint firstItem="i9f-Nq-w6T" firstAttribute="top" secondItem="6Nt-A2-upc" secondAttribute="top" id="T2K-aF-K7j"/>
                             <constraint firstAttribute="trailing" secondItem="Ff5-Px-QSe" secondAttribute="trailing" id="bNp-8l-Xvb"/>

@@ -40,11 +40,13 @@ class MainViewController: UIViewController {
         
         collectionView.dataSource = self
         collectionView.delegate = self
+
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 5
         layout.minimumInteritemSpacing = 5
         collectionView.setCollectionViewLayout(layout, animated: true)
+        
         
         tableView.dataSource = self
         tableView.delegate = self

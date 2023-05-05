@@ -50,7 +50,7 @@ class DetailViewController: UIViewController {
         
         guard let dowloadUrl = URL(string: result.posterUrl) else { return }
         image.kf.setImage(with: ImageResource(downloadURL: dowloadUrl),
-                          placeholder: UIImage(named: "placeholder"))
+                          placeholder: UIImage(named: "loading.gif"))
         
         let blurProcessor = DownsamplingImageProcessor(size: movieImageView.bounds.size)
         |> BlurImageProcessor(blurRadius: 10)
@@ -88,7 +88,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UIScreen.main.bounds.height/4
+        return UIScreen.main.bounds.height/8
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
