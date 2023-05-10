@@ -8,6 +8,7 @@
 import UIKit
 import Alamofire
 import Kingfisher
+import Firebase
 
 class MainViewController: UIViewController {
     
@@ -51,6 +52,21 @@ class MainViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
     }
+    
+    @IBAction func signOutClicked(_ sender: Any) {
+        do {
+             try Auth.auth().signOut()
+          
+            if let mainViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() {
+                 UIApplication.shared.windows.first?.rootViewController = mainViewController
+             }
+             
+          
+         } catch let signOutError as NSError {
+             print("Error signing out: \(signOutError)")
+         }
+    }
+    
 }
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
