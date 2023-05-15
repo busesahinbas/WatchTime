@@ -113,6 +113,7 @@
                     <connections>
                         <outlet property="mailTextField" destination="CJf-qX-LLW" id="NJJ-nO-wz9"/>
                         <outlet property="passwordTextField" destination="Mac-HX-RnU" id="IWi-AZ-Zqa"/>
+                        <segue destination="wXQ-A7-wga" kind="presentation" identifier="signInSegue" modalPresentationStyle="fullScreen" id="JVq-US-QOQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -277,6 +278,9 @@ Home</string>
                                                         <rect key="frame" x="298.66666666666669" y="0.0" width="46.333333333333314" height="34.333333333333336"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" image="bookmark" catalog="system"/>
+                                                        <connections>
+                                                            <action selector="saveButtonClicked:" destination="0JM-Tf-13h" eventType="touchUpInside" id="4TV-MM-A7h"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -404,16 +408,17 @@ Home</string>
                         <outlet property="movieName" destination="0EC-XC-vT2" id="yla-PA-dqc"/>
                         <outlet property="movieRate" destination="w26-9u-BlH" id="JEW-mI-1tX"/>
                         <outlet property="movieType" destination="RfR-wV-wwL" id="9Nc-xz-ay7"/>
+                        <outlet property="saveButton" destination="P6F-3q-UjI" id="rsr-tx-Bo2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="edz-UQ-vT3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4587.0229007633588" y="-315.49295774647891"/>
+            <point key="canvasLocation" x="4543" y="-35"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="5ue-rJ-OuF">
             <objects>
-                <tabBarController id="wXQ-A7-wga" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" id="wXQ-A7-wga" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5a6-op-xsV">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

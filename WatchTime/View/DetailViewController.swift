@@ -7,6 +7,7 @@
 
 import UIKit
 import Kingfisher
+import Firebase
 
 class DetailViewController: UIViewController {
     
@@ -15,11 +16,10 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var movieName: UILabel!
     @IBOutlet weak var movieType: UILabelPadding!
     @IBOutlet weak var image: UIImageView!
-    
     @IBOutlet weak var movieRate: UILabel!
     @IBOutlet weak var movieLanguage: UILabel!
-    
     @IBOutlet weak var detailTableView: UITableView!
+    @IBOutlet weak var saveButton: UIButton!
     
     var result : Result?
     
@@ -67,6 +67,12 @@ class DetailViewController: UIViewController {
         
         detailTableView.reloadData()
     }
+    
+    
+    @IBAction func saveButtonClicked(_ sender: Any) {
+       
+    }
+    
 }
 
 extension DetailViewController: UITableViewDelegate, UITableViewDataSource {

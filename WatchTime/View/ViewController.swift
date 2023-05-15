@@ -42,13 +42,8 @@ class ViewController: UIViewController {
                     }
                     
                     // Navigate to the main screen
-                    
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainViewController") as? MainViewController
-                    self.navigationController?.pushViewController(vc!, animated: true)
-                
-                
-                
-             
+                    self.performSegue(withIdentifier: "signInSegue", sender: nil)
+                     
                 }
     }
     
