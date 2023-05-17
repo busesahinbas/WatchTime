@@ -401,9 +401,9 @@ Home</string>
                     </view>
                     <navigationItem key="navigationItem" id="HvY-MY-LZP"/>
                     <connections>
+                        <outlet property="blurImageView" destination="Rt1-61-4i4" id="PmN-Ol-lav"/>
                         <outlet property="detailTableView" destination="qoK-vi-uu8" id="Szh-mI-SYC"/>
-                        <outlet property="image" destination="35o-cm-aSn" id="2gC-9i-Oyt"/>
-                        <outlet property="movieImageView" destination="Rt1-61-4i4" id="PmN-Ol-lav"/>
+                        <outlet property="movieImageView" destination="35o-cm-aSn" id="2gC-9i-Oyt"/>
                         <outlet property="movieLanguage" destination="x0d-t5-LNd" id="SkF-tn-OBF"/>
                         <outlet property="movieName" destination="0EC-XC-vT2" id="yla-PA-dqc"/>
                         <outlet property="movieRate" destination="w26-9u-BlH" id="JEW-mI-1tX"/>

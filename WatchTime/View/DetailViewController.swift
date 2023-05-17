@@ -11,11 +11,10 @@ import Firebase
 
 class DetailViewController: UIViewController {
     
-    
-    @IBOutlet weak var movieImageView: UIImageView!
+    @IBOutlet weak var blurImageView: UIImageView!
     @IBOutlet weak var movieName: UILabel!
     @IBOutlet weak var movieType: UILabelPadding!
-    @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var movieImageView: UIImageView!
     @IBOutlet weak var movieRate: UILabel!
     @IBOutlet weak var movieLanguage: UILabel!
     @IBOutlet weak var detailTableView: UITableView!
@@ -44,18 +43,18 @@ class DetailViewController: UIViewController {
     func configure(){
         guard let result = result else { return }
         movieName.text = result.originalTitle
-        movieLanguage.text = result.originalLanguage.uppercased()
+        movieLanguage.text = result.language
         movieRate.text = result.voteText
         movieType.text = result.genre
         
         guard let dowloadUrl = URL(string: result.posterUrl) else { return }
-        image.kf.setImage(with: ImageResource(downloadURL: dowloadUrl),
-                          placeholder: UIImage(named: "loading.gif"))
+        movieImageView.kf.setImage(with: ImageResource(downloadURL: dowloadUrl),
+                                   placeholder: UIImage(named: "loading.gif"))
         
-        let blurProcessor = DownsamplingImageProcessor(size: movieImageView.bounds.size)
+        let blurProcessor = DownsamplingImageProcessor(size: blurImageView.bounds.size)
         |> BlurImageProcessor(blurRadius: 10)
         
-        movieImageView.kf.setImage(
+        blurImageView.kf.setImage(
             with: dowloadUrl,
             placeholder: nil,
             options: [
@@ -70,10 +69,26 @@ class DetailViewController: UIViewController {
     
     
     @IBAction func saveButtonClicked(_ sender: Any) {
-       
+        
+        let firestoreDatabase = Firestore.firestore()
+        
+        guard let result = self.result else { return }
+        let firestorePost: [String : Any] = [Document.date.rawValue : FieldValue.serverTimestamp(), Document.user.rawValue : Auth.auth().currentUser!.email!, Document.imageUrl.rawValue : result.posterPath, Document.movieName.rawValue : result.originalTitle, Document.movieType.rawValue : result.genreIDS, Document.movieRate.rawValue: result.voteAverage, Document.movieLanguage.rawValue : result.originalLanguage, Document.movieDesc.rawValue : result.overview]
+        
+        let firestoreReference = firestoreDatabase.collection(Auth.auth().currentUser!.email!).document(String(result.id))
+        
+        firestoreReference.setData(firestorePost) { (error) in
+            if let error = error {
+                makeAlert(title: .error, description: error.localizedDescription, view: self)
+                return
+            }
+            
+            self.tabBarController?.selectedIndex = 1
+        }
     }
-    
+
 }
+
 
 extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     

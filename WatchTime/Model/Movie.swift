@@ -40,6 +40,10 @@ struct Result: Codable {
     var posterUrl : String {
          return "https://image.tmdb.org/t/p/w500\(posterPath)"
     }
+    
+    var language : String {
+        return originalLanguage.uppercased()
+    }
 
     var genre : String {
         switch genreIDS[0]{

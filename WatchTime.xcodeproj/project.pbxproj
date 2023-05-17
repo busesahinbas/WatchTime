@@ -16,6 +16,7 @@
 		4D3F41CE29CDD7F600AD0AC5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D3F41CC29CDD7F600AD0AC5 /* LaunchScreen.storyboard */; };
 		4D3F41D629CE246F00AD0AC5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3F41D529CE246F00AD0AC5 /* MainViewController.swift */; };
 		4D5991AB2A029C3700693FD5 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5991AA2A029C3700693FD5 /* FavoritesViewController.swift */; };
+		4D7A50CC2A14EDEA0044D86A /* DocumentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7A50CB2A14EDEA0044D86A /* DocumentModel.swift */; };
 		4DB595BD2A0BCE6E004608F1 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB595BC2A0BCE6E004608F1 /* SignUpViewController.swift */; };
 		4DB595C02A0BCEAC004608F1 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB595BE2A0BCEAC004608F1 /* Enum.swift */; };
 		4DB595C12A0BCEAC004608F1 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB595BF2A0BCEAC004608F1 /* Util.swift */; };
@@ -51,6 +52,7 @@
 		4D3F41CF29CDD7F600AD0AC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D3F41D529CE246F00AD0AC5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4D5991AA2A029C3700693FD5 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		4D7A50CB2A14EDEA0044D86A /* DocumentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentModel.swift; sourceTree = "<group>"; };
 		4DB595BC2A0BCE6E004608F1 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		4DB595BE2A0BCEAC004608F1 /* Enum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		4DB595BF2A0BCEAC004608F1 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				4DB8F17329E3E8AA00367A80 /* Movie.swift */,
+				4D7A50CB2A14EDEA0044D86A /* DocumentModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 				4DB8F17029E3528700367A80 /* ServiceHelper.swift in Sources */,
 				4D3F41C429CDD7F500AD0AC5 /* SceneDelegate.swift in Sources */,
 				4D5991AB2A029C3700693FD5 /* FavoritesViewController.swift in Sources */,
+				4D7A50CC2A14EDEA0044D86A /* DocumentModel.swift in Sources */,
 				4DB8F16A29DC540F00367A80 /* DetailViewCell.swift in Sources */,
 				4DB595C02A0BCEAC004608F1 /* Enum.swift in Sources */,
 				4DB595BD2A0BCE6E004608F1 /* SignUpViewController.swift in Sources */,
