@@ -44,7 +44,7 @@ class SignUpViewController: UIViewController {
         Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
             if let error = error {
                 // Show an alert to the user indicating that account creation failed
-                print("Error creating user: \(error.localizedDescription)")
+                makeAlert(title: .error, description: error.localizedDescription, view: self)
                 return
             }
             
@@ -53,7 +53,7 @@ class SignUpViewController: UIViewController {
             changeRequest?.displayName = username
             changeRequest?.commitChanges(completion: nil)
             
-            // Show an alert to the user indicating that account creation succeeded
+            //TODO: go back sign in page
         }
     }
 }

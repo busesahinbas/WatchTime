@@ -14,6 +14,7 @@ class FavoritesViewController: UIViewController {
     @IBOutlet weak var favoritesTable: UITableView!
     
     var favResult = [Result]()
+    var documentArray = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +46,7 @@ class FavoritesViewController: UIViewController {
                 for document in snapshot!.documents {
                     
                     let documentID = document.documentID
-                    //self.documentArray.append(documentID)
+                    self.documentArray.append(documentID)
 
                     let documentResult = Result(
                         genreIDS: document.get(Document.movieType.rawValue) as! [Int],
@@ -101,8 +102,28 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-       
-
+        if editingStyle == .delete {
+            let firestoreDatabase = Firestore.firestore()
+            let collectionRef = firestoreDatabase.collection(Auth.auth().currentUser!.email!)
+            let documentRef = collectionRef.document(documentArray[indexPath.row])
+            
+            documentRef.delete { error in
+                if let error = error {
+                    // Handle the error
+                    print("Error deleting document: \(error.localizedDescription)")
+                } else {
+                    // Document successfully deleted
+                    print("Document deleted successfully")
+                    
+                    // Update the data source by removing the deleted item
+                    self.documentArray.remove(at: indexPath.row)
+                    
+                    self.favoritesTable.reloadData()
+                    
+                }
+            }
+        }
     }
+
     
 }

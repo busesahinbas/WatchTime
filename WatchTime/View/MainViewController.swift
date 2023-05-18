@@ -41,7 +41,7 @@ class MainViewController: UIViewController {
         
         collectionView.dataSource = self
         collectionView.delegate = self
-
+        
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 5
@@ -55,16 +55,15 @@ class MainViewController: UIViewController {
     
     @IBAction func signOutClicked(_ sender: Any) {
         do {
-             try Auth.auth().signOut()
-          
+            try Auth.auth().signOut()
+            
             if let mainViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() {
-                 UIApplication.shared.windows.first?.rootViewController = mainViewController
-             }
-             
-          
-         } catch let signOutError as NSError {
-             print("Error signing out: \(signOutError)")
-         }
+                UIApplication.shared.windows.first?.rootViewController = mainViewController
+            }
+            
+        } catch let signOutError as NSError {
+            print("Error signing out: \(signOutError)")
+        }
     }
     
 }
