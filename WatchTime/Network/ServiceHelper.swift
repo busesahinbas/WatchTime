@@ -13,6 +13,8 @@ let apiKey = "?api_key=cddca74979cb6b2cd49d2a06b8ec0e2c&language=en-US&page=1"
 enum Endpoints {
     case moviePopular
     case movieNowPlaying
+    case seriesPopular
+    case seriesNowPlaying
     
     var url: String {
         switch self {
@@ -20,6 +22,10 @@ enum Endpoints {
             return baseUrl + "movie/popular" + apiKey
         case .movieNowPlaying:
             return baseUrl + "movie/now_playing" + apiKey
+        case .seriesPopular:
+            return baseUrl + "tv/popular" + apiKey
+        case .seriesNowPlaying:
+            return baseUrl + "tv/on_the_air" + apiKey
         }
     }
 }

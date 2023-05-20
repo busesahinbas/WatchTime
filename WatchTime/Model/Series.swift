@@ -1,16 +1,16 @@
 //
-//  Movie.swift
+//  Series.swift
 //  WatchTime
 //
-//  Created by Buse Şahinbaş on 10.04.2023.
+//  Created by Buse Şahinbaş on 20.05.2023.
 //
 
 import Foundation
 
-// MARK: - Movie
-struct Movie: Codable {
+// MARK: - Series
+struct Series: Codable {
     
-    let results: [Result]
+    let results: [SeriesResult]
     
     enum CodingKeys: String, CodingKey {
         case results
@@ -18,18 +18,14 @@ struct Movie: Codable {
 }
 
 // MARK: - Result
-struct Result: Codable {
+struct SeriesResult: Codable {
     let genreIDS: [Int]
     let id: Int
     let originalLanguage: String
-    let originalTitle, overview: String
+    let originalName, overview: String
     let popularity: Double
-    let posterPath, title: String
+    let posterPath, name: String
     let voteAverage: Double
-    
-    var name : String {
-        return title
-    }
     
     var voteText : String {
         return "\(voteAverage) /10 IMDB"
@@ -101,16 +97,14 @@ struct Result: Codable {
         case genreIDS = "genre_ids"
         case id
         case originalLanguage = "original_language"
-        case originalTitle = "original_title"
+        case originalName = "original_name"
         case overview, popularity
         case posterPath = "poster_path"
-        case title
+        case name
         case voteAverage = "vote_average"
     }
     
 }
 
 // MARK: - Request
-struct MovieRequest: Codable {}
-
-
+struct SeriesRequest: Codable {}

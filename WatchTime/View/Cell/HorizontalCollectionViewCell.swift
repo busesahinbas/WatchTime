@@ -21,7 +21,18 @@ class HorizontalCollectionViewCell: UICollectionViewCell {
     
     func configure(result : [Result]?, indexPath : IndexPath) {
         guard let result = result else { return }
-        movieName.text = result[indexPath.row].originalTitle
+        movieName.text = result[indexPath.row].name
+        movieRate.text = result[indexPath.row].voteText
+        
+        let downloadUrl = URL(string: (result[indexPath.row].posterUrl))!
+        movieImage.kf.setImage(with: ImageResource(downloadURL: downloadUrl),
+                               placeholder: UIImage(named: "loading.gif"),
+                               options: [.processor(RoundCornerImageProcessor(cornerRadius: 50))])
+    }
+    
+    func configure(result : [SeriesResult]?, indexPath : IndexPath) {
+        guard let result = result else { return }
+        movieName.text = result[indexPath.row].name
         movieRate.text = result[indexPath.row].voteText
         
         let downloadUrl = URL(string: (result[indexPath.row].posterUrl))!

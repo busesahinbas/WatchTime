@@ -32,13 +32,24 @@ class TableViewCell: UITableViewCell {
         
     }
     
-    
-    
     func configure(result : [Result]?, indexPath : IndexPath) {
         guard let result = result else { return }
         moiveLabel.text = result[indexPath.row].originalTitle
         movieRate.text = result[indexPath.row].voteText
+        movieLanguage.text = result[indexPath.row].language
+        
+        let downloadUrl = URL(string: (result[indexPath.row].posterUrl))!
+        movieImage.kf.setImage(with: ImageResource(downloadURL: downloadUrl),
+                               placeholder: UIImage(named: "loading.gif"),
+                               options: [.processor(RoundCornerImageProcessor(cornerRadius: 50))])
+    }
+    
+    func configure(result : [SeriesResult]?, indexPath : IndexPath) {
+        guard let result = result else { return }
+        moiveLabel.text = result[indexPath.row].name
+        movieRate.text = result[indexPath.row].voteText
         movieType.text = result[indexPath.row].genre
+        movieLanguage.text = result[indexPath.row].language
         
         let downloadUrl = URL(string: (result[indexPath.row].posterUrl))!
         movieImage.kf.setImage(with: ImageResource(downloadURL: downloadUrl),

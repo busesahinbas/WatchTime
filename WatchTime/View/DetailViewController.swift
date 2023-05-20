@@ -88,9 +88,11 @@ class DetailViewController: UIViewController {
         let firestoreDatabase = Firestore.firestore()
         
         guard let result = self.result else { return }
-        let firestorePost: [String : Any] = [Document.date.rawValue : FieldValue.serverTimestamp(), Document.user.rawValue : Auth.auth().currentUser!.email!, Document.imageUrl.rawValue : result.posterPath, Document.movieName.rawValue : result.originalTitle, Document.movieType.rawValue : result.genreIDS, Document.movieRate.rawValue: result.voteAverage, Document.movieLanguage.rawValue : result.originalLanguage, Document.movieDesc.rawValue : result.overview]
+        let firestorePost: [String : Any] = [Document.date.rawValue : FieldValue.serverTimestamp(), Document.user.rawValue : Auth.auth().currentUser!.email!, Document.imageUrl.rawValue : result.posterPath, Document.movieName.rawValue : result.name, Document.movieType.rawValue : result.genreIDS, Document.movieRate.rawValue: result.voteAverage, Document.movieLanguage.rawValue : result.originalLanguage, Document.movieDesc.rawValue : result.overview]
         
         let firestoreReference = firestoreDatabase.collection(Auth.auth().currentUser!.email!).document(String(result.id))
+        documentArray.append(String(result.id))
+        UserDefaults.standard.set(documentArray, forKey: "documentArray")
         
         firestoreReference.setData(firestorePost) { (error) in
             if let error = error {
@@ -101,7 +103,7 @@ class DetailViewController: UIViewController {
             self.saveButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
             self.reloadInputViews()
             
-            self.tabBarController?.selectedIndex = 1
+            self.tabBarController?.selectedIndex = 2
         }
     }
     

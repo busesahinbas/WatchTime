@@ -42,6 +42,7 @@ class FavoritesViewController: UIViewController {
             if snapshot?.isEmpty != true && snapshot != nil {
                 
                 self.favResult.removeAll(keepingCapacity: false)
+                documentArray.removeAll(keepingCapacity: false)
                 
                 for document in snapshot!.documents {
                     
@@ -107,6 +108,8 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
             let firestoreDatabase = Firestore.firestore()
             let collectionRef = firestoreDatabase.collection(Auth.auth().currentUser!.email!)
             let documentRef = collectionRef.document(documentArray[indexPath.row])
+            self.favResult.remove(at: indexPath.row)
+            documentArray.remove(at: indexPath.row)
             
             documentRef.delete { error in
                 if let error = error {
@@ -117,13 +120,14 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
                     print("Document deleted successfully")
                     
                     // Update the data source by removing the deleted item
-                    documentArray.remove(at: indexPath.row)
+                  
                     UserDefaults.standard.set(documentArray, forKey: "documentArray")
                     
                     self.favoritesTable.reloadData()
                     
                 }
             }
+           
         }
     }
     

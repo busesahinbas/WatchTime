@@ -14,9 +14,6 @@ struct Service {
     // MARK: - Singleton
     static let shared = Service()
     
-    // MARK: -BaseURL
-    //static let url = "https://api.themoviedb.org/3/movie/now_playing?api_key=cddca74979cb6b2cd49d2a06b8ec0e2c&language=en-US&page=1"
-    
     // MARK: -Service
     func makeRequest<T: Decodable, P: Encodable>(url: String, _ req: P, resp: T.Type, _ completion: @escaping ((_ response: T?, _ error: Error?) -> Void)){
         AF
@@ -32,6 +29,7 @@ struct Service {
             }
     }
     
+    // MARK: -Movie Request
     func getMovie(url: String, completion: @escaping ([Result]?, Error?) -> ()) {
         let req = MovieRequest()
         
@@ -42,7 +40,21 @@ struct Service {
             }
             completion(response.results, nil)
         }
+    }
+    
+    // MARK: -Series Request
+    func getSeries(url: String, completion: @escaping ([SeriesResult]?, Error?) -> ()) {
+        let req = SeriesRequest()
+        
+        makeRequest(url: url, req, resp: Series.self) { response, error in
+            guard let response = response, error == nil else {
+                completion(nil, error)
+                return
+            }
+            completion(response.results, nil)
+        }
         
     }
+    
     
 }
