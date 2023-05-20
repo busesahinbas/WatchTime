@@ -12,11 +12,10 @@ class SignUpViewController: UIViewController {
     
     
     @IBOutlet weak var mailTextField: UITextField!
-    
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    
     @IBOutlet weak var confirmTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -53,7 +52,7 @@ class SignUpViewController: UIViewController {
             changeRequest?.displayName = username
             changeRequest?.commitChanges(completion: nil)
             
-            //TODO: go back sign in page
+            self.performSegue(withIdentifier: "goToSignInSegue", sender: nil)
         }
     }
 }

@@ -7,17 +7,11 @@
 
 import Foundation
 
-// This file was generated from JSON Schema using quicktype, do not modify it directly.
-// To parse the JSON, add this file to your project and do:
-//
-//   let movie = try? JSONDecoder().decode(MovieNowPlaying.self, from: jsonData)
-
-
 // MARK: - Movie
 struct Movie: Codable {
     
     let results: [Result]
-
+    
     enum CodingKeys: String, CodingKey {
         case results
     }
@@ -38,13 +32,13 @@ struct Result: Codable {
     }
     
     var posterUrl : String {
-         return "https://image.tmdb.org/t/p/w500\(posterPath)"
+        return "https://image.tmdb.org/t/p/w500\(posterPath)"
     }
     
     var language : String {
         return originalLanguage.uppercased()
     }
-
+    
     var genre : String {
         switch genreIDS[0]{
         case 28:
@@ -104,6 +98,7 @@ struct Result: Codable {
     
 }
 
+// MARK: - Request
 struct MovieRequest: Codable {}
 
 

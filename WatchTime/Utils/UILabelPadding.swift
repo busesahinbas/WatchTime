@@ -13,7 +13,6 @@ class UILabelPadding: UILabel {
     
     override func drawText(in rect: CGRect) {
         super.drawText(in: rect.inset(by: padding))
-        
     }
     
     override var intrinsicContentSize : CGSize {

@@ -14,7 +14,6 @@ class FavoritesViewController: UIViewController {
     @IBOutlet weak var favoritesTable: UITableView!
     
     var favResult = [Result]()
-   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,13 +42,13 @@ class FavoritesViewController: UIViewController {
             if snapshot?.isEmpty != true && snapshot != nil {
                 
                 self.favResult.removeAll(keepingCapacity: false)
-
+                
                 for document in snapshot!.documents {
                     
                     let documentID = document.documentID
                     documentArray.append(documentID)
                     UserDefaults.standard.set(documentArray, forKey: "documentArray")
-
+                    
                     let documentResult = Result(
                         genreIDS: document.get(Document.movieType.rawValue) as! [Int],
                         id: Int(documentID)!,
@@ -127,6 +126,5 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
     }
-
     
 }

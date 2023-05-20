@@ -1,5 +1,5 @@
 //
-//  MainViewController.swift
+//  MovieViewController.swift
 //  WatchTime
 //
 //  Created by Buse Şahinbaş on 24.03.2023.
@@ -10,7 +10,7 @@ import Alamofire
 import Kingfisher
 import Firebase
 
-class MainViewController: UIViewController {
+class MovieViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -23,7 +23,11 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+        fetch()
+        configure()
+    }
+    
+    func fetch() {
         popularViewModel.getMoviePopular()
         popularViewModel.didFinishFetch = {
             self.popularResult = self.popularViewModel.movieResult
@@ -35,9 +39,6 @@ class MainViewController: UIViewController {
             self.nowPlayingResult = self.nowPlayingViewModel.movieResult
             self.tableView.reloadData()
         }
-        
-        configure()
-  
     }
     
     func configure() {
@@ -55,12 +56,13 @@ class MainViewController: UIViewController {
         collectionView.setCollectionViewLayout(layout, animated: true)
         
     }
+    
     @IBAction func signOutClicked(_ sender: Any) {
         do {
             try Auth.auth().signOut()
             
-            if let mainViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() {
-                UIApplication.shared.windows.first?.rootViewController = mainViewController
+            if let MovieViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() {
+                UIApplication.shared.windows.first?.rootViewController = MovieViewController
             }
             
         } catch let signOutError as NSError {
@@ -70,7 +72,7 @@ class MainViewController: UIViewController {
     
 }
 
-extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension MovieViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func registerCollectionView(){
         collectionView.register(UINib(nibName: "HorizontalCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "HorizontalCollectionViewCell")
@@ -107,7 +109,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
 }
 
-extension MainViewController: UITableViewDelegate, UITableViewDataSource {
+extension MovieViewController: UITableViewDelegate, UITableViewDataSource {
     
     func registerTableView(){
         tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "TableViewCell")

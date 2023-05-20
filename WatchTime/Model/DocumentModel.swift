@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - Firestore Document Model
 enum Document: String {
     case user
     case date

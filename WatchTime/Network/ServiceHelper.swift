@@ -15,11 +15,11 @@ enum Endpoints {
     case movieNowPlaying
     
     var url: String {
-          switch self {
-          case .moviePopular:
-              return baseUrl + "movie/popular" + apiKey
-          case .movieNowPlaying:
-              return baseUrl + "movie/now_playing" + apiKey
-          }
-      }
+        switch self {
+        case .moviePopular:
+            return baseUrl + "movie/popular" + apiKey
+        case .movieNowPlaying:
+            return baseUrl + "movie/now_playing" + apiKey
+        }
+    }
 }
