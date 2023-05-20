@@ -36,11 +36,17 @@ class MainViewController: UIViewController {
             self.tableView.reloadData()
         }
         
+        configure()
+  
+    }
+    
+    func configure() {
         registerCollectionView()
         registerTableView()
-        
         collectionView.dataSource = self
         collectionView.delegate = self
+        tableView.dataSource = self
+        tableView.delegate = self
         
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -48,11 +54,7 @@ class MainViewController: UIViewController {
         layout.minimumInteritemSpacing = 5
         collectionView.setCollectionViewLayout(layout, animated: true)
         
-        
-        tableView.dataSource = self
-        tableView.delegate = self
     }
-    
     @IBAction func signOutClicked(_ sender: Any) {
         do {
             try Auth.auth().signOut()

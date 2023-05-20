@@ -27,6 +27,22 @@ class DetailViewController: UIViewController {
         
         self.setUp()
         self.configure()
+        self.checkIsSaved()
+        
+        
+    }
+    
+    func checkIsSaved(){
+        
+        guard let result = result else {
+            return
+        }
+        if(documentArray.contains(String(result.id))){
+            //let bookmarkImage = UIImage(systemName: "bookmark.fill")
+            saveButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+            reloadInputViews()
+        }
+    
     }
     
     func setUp(){
@@ -82,6 +98,10 @@ class DetailViewController: UIViewController {
                 makeAlert(title: .error, description: error.localizedDescription, view: self)
                 return
             }
+            
+    
+            self.saveButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+            self.reloadInputViews()
             
             self.tabBarController?.selectedIndex = 1
         }

@@ -14,3 +14,6 @@ func makeAlert(title:MessageTitle, description:String, view:UIViewController) {
     alert.addAction(okButton)
     view.present(alert, animated: true, completion: nil)
 }
+
+var documentArray = [String]()
+

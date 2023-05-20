@@ -528,11 +528,11 @@ Home</string>
             </objects>
             <point key="canvasLocation" x="1991.6030534351144" y="755.63380281690149"/>
         </scene>
-        <!--Item 1-->
+        <!--Movies-->
         <scene sceneID="04Y-Sn-hrF">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="q9z-Qe-SDP" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 1" id="gj3-kI-bgs"/>
+                    <tabBarItem key="tabBarItem" title="Movies" image="film.circle" catalog="system" id="gj3-kI-bgs"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oA3-O8-lxN">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -547,11 +547,11 @@ Home</string>
             </objects>
             <point key="canvasLocation" x="2782.4427480916029" y="-315.49295774647891"/>
         </scene>
-        <!--Item 2-->
+        <!--Favorites-->
         <scene sceneID="eNb-LX-Nzn">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eQS-xL-GMk" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 2" id="hht-lc-Tqf"/>
+                    <tabBarItem key="tabBarItem" title="Favorites" image="heart.circle" catalog="system" id="hht-lc-Tqf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="iUA-1A-fD2">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -587,6 +587,8 @@ Home</string>
     </scenes>
     <resources>
         <image name="bookmark" catalog="system" width="110" height="128"/>
+        <image name="film.circle" catalog="system" width="128" height="123"/>
+        <image name="heart.circle" catalog="system" width="128" height="123"/>
         <image name="language" width="122.87999725341797" height="92.910003662109375"/>
         <image name="rectangle.portrait.and.arrow.right" catalog="system" width="128" height="109"/>
         <image name="sign" width="780" height="238"/>

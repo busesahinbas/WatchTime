@@ -15,6 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         FirebaseApp.configure()
+
+        if let retrievedArray = UserDefaults.standard.array(forKey: "documentArray") as? [String] {
+                   // Perform checks on retrievedArray
+                   documentArray = retrievedArray
+        }
         
         return true
     }

@@ -14,19 +14,20 @@ class FavoritesViewController: UIViewController {
     @IBOutlet weak var favoritesTable: UITableView!
     
     var favResult = [Result]()
-    var documentArray = [String]()
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        registerTableView()
-        favoritesTable.dataSource = self
-        favoritesTable.delegate = self
-        // Do any additional setup after loading the view.
-        
+        configure()
         getDataFromFirestore()
     }
     
+    func configure() {
+        registerTableView()
+        favoritesTable.dataSource = self
+        favoritesTable.delegate = self
+    }
     
     func getDataFromFirestore() {
         
@@ -46,7 +47,8 @@ class FavoritesViewController: UIViewController {
                 for document in snapshot!.documents {
                     
                     let documentID = document.documentID
-                    self.documentArray.append(documentID)
+                    documentArray.append(documentID)
+                    UserDefaults.standard.set(documentArray, forKey: "documentArray")
 
                     let documentResult = Result(
                         genreIDS: document.get(Document.movieType.rawValue) as! [Int],
@@ -116,7 +118,8 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
                     print("Document deleted successfully")
                     
                     // Update the data source by removing the deleted item
-                    self.documentArray.remove(at: indexPath.row)
+                    documentArray.remove(at: indexPath.row)
+                    UserDefaults.standard.set(documentArray, forKey: "documentArray")
                     
                     self.favoritesTable.reloadData()
                     
